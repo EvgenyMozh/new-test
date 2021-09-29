@@ -7,12 +7,12 @@ import s from './Profile.module.css';
 const Profile = () => {
   return (
 
-    <div className={s.content}>
+    <div>
       <img src='fon.jpg'></img>
       <div>
         <a>ava + description</a>
       </div>
-      <MyPosts />
+      <MyPosts message='My new post' />
     </div>
 
   )

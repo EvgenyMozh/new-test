@@ -4,16 +4,16 @@ import Post from './Post/Post';
 
 
 
-const MyPosts = () => {
+const MyPosts = (props) => {
   return (
     <div>
-      My posts
+      <h2> {props.message}</h2>
       <div>
         
       </div>
       <div className={s.posts}>
-        <Post />
-        <Post />
+        <Post nettop='Привет я тут' />
+        <Post nettop='Меня зовут милка'/>
         <Post />
         <Post />
         <Post />

@@ -3,12 +3,13 @@ import s from './Post.module.css';
 
 
 
-const Post = () => {
+const Post = (props) => {
+  
   return (
 
     <div className={s.item}>
       <img src="ava.jpg" />
-      <p>post</p>
+      <p><button> {props.nettop} </button></p>
       <button>Нажми</button>
     </div>
 
