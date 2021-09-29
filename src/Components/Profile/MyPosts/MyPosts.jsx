@@ -9,11 +9,14 @@ const MyPosts = () => {
     <div>
       My posts
       <div>
-        <button> Нажми</button>
+        
       </div>
       <div className={s.posts}>
         <Post />
-        
+        <Post />
+        <Post />
+        <Post />
+        <Post />
       </div>
     </div>
 
