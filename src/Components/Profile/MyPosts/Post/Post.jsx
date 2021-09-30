@@ -9,8 +9,7 @@ const Post = (props) => {
 
     <div className={s.item}>
       <img src="ava.jpg" />
-      <p><button> {props.nettop} </button></p>
-      <button>Нажми</button>
+       {props.message} 
     </div>
 
 
