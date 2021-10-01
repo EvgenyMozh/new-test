@@ -12,8 +12,8 @@ const Profile = () => {
     <div className={s.profile}>
       <div>
         <ProfileInfo />
+        <MyPosts />
       </div>
-      <MyPosts />
     </div>
 
   )
