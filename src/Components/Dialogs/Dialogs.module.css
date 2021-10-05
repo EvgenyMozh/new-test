@@ -3,6 +3,11 @@ display: grid;
 grid-template-columns: 2fr 10fr;
 }
 
+.dialogs a {
+    color: rgb(111, 17, 233);
+    text-decoration: none;
+}
+
 .dialogsItems{
 padding: 10px;
 }
