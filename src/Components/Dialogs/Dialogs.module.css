@@ -11,6 +11,13 @@ grid-template-columns: 2fr 10fr;
 .dialogsItems{
 padding: 10px;
 }
+.dialogsItems img {
+    
+    max-width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    
+}
 .dialogsItems .active{
     color: cornflowerblue;
     }

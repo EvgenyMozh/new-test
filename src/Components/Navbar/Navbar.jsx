@@ -4,7 +4,7 @@ import s from "./Navbar.module.css";
 
 
 
-const Navbar = () => {
+const Navbar = (props) => {
   return(
 
     <nav className={s.nav}>
