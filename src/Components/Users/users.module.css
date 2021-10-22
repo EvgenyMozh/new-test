@@ -6,3 +6,6 @@ border-radius: 100px;
 .userPage {
     padding: 20px;
 }
+.selectedPage {
+    font-weight: bold;
+}
