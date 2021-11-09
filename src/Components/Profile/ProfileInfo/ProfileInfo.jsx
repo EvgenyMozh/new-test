@@ -1,23 +1,24 @@
-import React from 'react';
-import s from './ProfileInfo.module.css';
+import React from "react";
+import Preloader from "../../common/Preloader/Preloader";
+import s from "./ProfileInfo.module.css";
 
-
-
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+  if (!props.profile) {
+    return <Preloader />;
+  }
   return (
-
     <div>
-      <img src='fon.jpg'></img>
+      <img src="fon.jpg"></img>
       <div>
         <div className={s.block}>
-          ava + description
-          </div>
+          <img src={props.profile.photos.large} />
+          <h3>{props.profile.fullName}</h3>
+          <div>{props.profile.aboutMe}</div>
+          <div>{props.profile.contacts.facebook}</div>
+        </div>
       </div>
-
     </div>
-
-  )
-
-}
+  );
+};
 
 export default ProfileInfo;
