@@ -1,6 +1,10 @@
 import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
 import s from "./ProfileInfo.module.css";
+import fon from "../../../assets/images/fon.jpg";
+
+
+
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -8,7 +12,7 @@ const ProfileInfo = (props) => {
   }
   return (
     <div>
-      <img src="fon.jpg"></img>
+      <img src={fon}></img>
       <div>
         <div className={s.block}>
           <img src={props.profile.photos.large} />
