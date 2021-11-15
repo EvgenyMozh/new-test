@@ -1,50 +1,50 @@
-import React from 'react';
-import DialogItem from './DialogItem/DialogItem';
-import s from './Dialogs.module.css';
-import Message from './Message/Message';
-
-
+import React from "react";
+import { Redirect } from "react-router";
+import DialogItem from "./DialogItem/DialogItem";
+import s from "./Dialogs.module.css";
+import Message from "./Message/Message";
 
 const Dialogs = (props) => {
   let state = props.dialogsPage;
 
-  let dialogsElement = state.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id} />);
-  let messagesElement = state.messages.map(m => <Message message={m.message} key={m.id}/>);
+  let dialogsElement = state.dialogs.map((d) => (
+    <DialogItem name={d.name} key={d.id} id={d.id} />
+  ));
+  let messagesElement = state.messages.map((m) => (
+    <Message message={m.message} key={m.id} />
+  ));
   let newMessageBody = state.newMessageBody;
   let onSendMeassageClick = () => {
     props.sendMessage();
-  }
+  };
   let onNewMassegeChange = (e) => {
     let body = e.target.value;
     props.updateNewMessageBody(body);
-  }
-  
-  return (
+  };
+  if (!props.isAuth) return <Redirect to={"/login"} />;
 
+  return (
     <div>
-      <div className={s.dialogs} >
-        <div className={s.dialogsItems}>
-          {dialogsElement}
-        </div>
+      <div className={s.dialogs}>
+        <div className={s.dialogsItems}>{dialogsElement}</div>
         <div className={s.messages}>
           <div>{messagesElement}</div>
           <div>
             <div>
-              <textarea value={newMessageBody} 
-                        onChange={onNewMassegeChange}
-                        placeholder='Введите сообщение'></textarea>
+              <textarea
+                value={newMessageBody}
+                onChange={onNewMassegeChange}
+                placeholder="Введите сообщение"
+              ></textarea>
             </div>
             <div>
-              <button onClick = { onSendMeassageClick }>Отправить</button>
+              <button onClick={onSendMeassageClick}>Отправить</button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-
-  )
-
-}
+  );
+};
 
 export default Dialogs;
