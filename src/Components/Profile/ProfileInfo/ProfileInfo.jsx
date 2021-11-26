@@ -13,7 +13,7 @@ const ProfileInfo = (props) => {
   }
   return (
     <div>
-      {/* <img src={fon}></img> */}
+      <img src={fon}></img>
       <div>
         <div className={s.block}>
           <img src={props.profile.photos.large} />
