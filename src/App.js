@@ -1,19 +1,24 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route } from "react-router-dom";
 import { compose } from "redux";
 import "./App.css";
 import Preloader from "./Components/common/Preloader/Preloader";
-import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import LoginPage from "./Components/Login/Login";
 import Music from "./Components/Music/Music";
 import Navbar from "./Components/Navbar/Navbar";
 import News from "./Components/News/News";
-import ProfileContainer from "./Components/Profile/ProfileContainer";
 import Settings from "./Components/Settings/Settings";
 import UsersContainer from "./Components/Users/UsersContainer";
 import { initializeApp } from "./redux/app-reducer";
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from "./redux/redux-store";
+/* import ProfileContainer from "./Components/Profile/ProfileContainer";
+import DialogsContainer from "./Components/Dialogs/DialogsContainer"; */
+const DialogsContainer = React.lazy(() => import("./Components/Dialogs/DialogsContainer"));
+const ProfileContainer = React.lazy(() => import("./Components/Profile/ProfileContainer"));
 
 
 class App extends Component {
@@ -31,12 +36,18 @@ class App extends Component {
         <HeaderContainer />
         <Navbar />
         <div className="app-wrapper-content">
+        <Suspense fallback={<div>Loading...</div>}>
           <Route path="/dialogs">
+          
             <DialogsContainer />
+            
           </Route>
           <Route path="/profile/:userId?">
+          
             <ProfileContainer />
+            
           </Route>
+          </Suspense>
           <Route path="/users">
             <UsersContainer />
           </Route>
@@ -55,4 +66,13 @@ const mapStateToProps = (state) => ({
 initialized: state.app.initialized
 })
 
-export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App);
+let AppContainer = compose(withRouter, connect(mapStateToProps, { initializeApp }))(App);
+
+let SamuraiJSApp = (props) => {
+  return <BrowserRouter>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </BrowserRouter>
+}
+export default SamuraiJSApp;
