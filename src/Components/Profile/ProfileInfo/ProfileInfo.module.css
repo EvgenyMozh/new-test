@@ -2,5 +2,9 @@
 .block {
    padding: 10px; 
 }
-
+.mainPhoto {
+   max-width: 150px;
+   height: 150px;
+   border-radius: 100px;
+   }
 
