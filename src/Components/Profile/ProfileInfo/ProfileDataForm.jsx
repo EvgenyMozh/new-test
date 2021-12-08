@@ -5,9 +5,7 @@ import s from "./ProfileInfo.module.css";
 import styles from "../../common/FormsControls/FormsControl.module.css";
 
 const ProfileDataForm = ({handleSubmit, profile, error}) => {
-    return (
-      
-       <form onSubmit={handleSubmit}> 
+    return <form onSubmit={handleSubmit}> 
            <div><button>Save</button></div>
            {error && <div className={styles.formSummaryError}>{error}</div>}
       
@@ -15,7 +13,7 @@ const ProfileDataForm = ({handleSubmit, profile, error}) => {
           <b>Full name</b>: {createFild("Full name", "fullname", [], Input)}
         </div>
         <div>
-          <b>Looking for a job</b>: {createFild("", "LookingForJob", [], Input, {type: "checkbox"})}
+          <b>Looking for a job</b>: {createFild("", "lookingForAJob", [], Input, {type: "checkbox"})}
         </div>
         
           <div>
@@ -37,7 +35,7 @@ const ProfileDataForm = ({handleSubmit, profile, error}) => {
           })}
         </div>
       </form> 
-    );
+    
   };
 
   const ProfileDataFormReduxForm = reduxForm({form: 'edit-profile'})(ProfileDataForm)
