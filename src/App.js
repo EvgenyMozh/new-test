@@ -15,8 +15,6 @@ import { initializeApp } from "./redux/app-reducer";
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from "./redux/redux-store";
-/* import ProfileContainer from "./Components/Profile/ProfileContainer";
-import DialogsContainer from "./Components/Dialogs/DialogsContainer"; */
 const DialogsContainer = React.lazy(() => import("./Components/Dialogs/DialogsContainer"));
 const ProfileContainer = React.lazy(() => import("./Components/Profile/ProfileContainer"));
 
@@ -28,7 +26,7 @@ class App extends Component {
 
   render() {
     if (!this.props.initialized) {
-    return <Preloader/>
+      return <Preloader />;
     }
 
     return (
@@ -36,20 +34,16 @@ class App extends Component {
         <HeaderContainer />
         <Navbar />
         <div className="app-wrapper-content">
-        <Suspense fallback={<div>Loading...</div>}>
-          <Route path="/dialogs">
-          
-            <DialogsContainer />
-            
-          </Route>
-          <Route path="/profile/:userId?">
-          
-            <ProfileContainer />
-            
-          </Route>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Route path="/dialogs">
+              <DialogsContainer />
+            </Route>
+            <Route path="/profile/:userId?">
+              <ProfileContainer />
+            </Route>
           </Suspense>
           <Route path="/users">
-            <UsersContainer />
+            <UsersContainer pageTitle={'Samurai'}/>
           </Route>
           <Route path="/login">
             <LoginPage />
